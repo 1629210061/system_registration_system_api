@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    password: 123456
+    username: root
+    url: jdbc:mysql://localhost:3306/student_registration_system?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mybatis:
+  #  ÅäÖÃmapperÎÄ¼şÎ»ÖÃ
+  type-aliases-package: com.hwh.entity
+  mapper-locations: classpath:mapper/*.xml
