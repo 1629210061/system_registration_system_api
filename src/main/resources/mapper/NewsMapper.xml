@@ -1,112 +1,144 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hwh.student_registration_system_api.mapper.NewsMapper" >
-  <resultMap id="BaseResultMap" type="com.hwh.student_registration_system_api.entity.News" >
-    <id column="Id" property="id" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="author" property="author" jdbcType="VARCHAR" />
-    <result column="source" property="source" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
-    <result column="clicks" property="clicks" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwh.student_registration_system_api.mapper.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.hwh.student_registration_system_api.entity.News">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="clicks" jdbcType="INTEGER" property="clicks" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    Id, title, author, source, update_time, clicks
+  <sql id="Base_Column_List">
+    Id, title, author, source, update_time, clicks, image_url,content
   </sql>
-
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from news
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from news
     where Id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from news
     where Id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hwh.student_registration_system_api.entity.News" >
+  <insert id="insert" parameterType="com.hwh.student_registration_system_api.entity.News">
     insert into news (Id, title, author, 
-      source, update_time, clicks
-      )
+      source, update_time, clicks, 
+      image_url, content)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
-      #{source,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{clicks,jdbcType=INTEGER}
-      )
+      #{source,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{clicks,jdbcType=INTEGER}, 
+      #{imageUrl,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hwh.student_registration_system_api.entity.News" >
+  <insert id="insertSelective" parameterType="com.hwh.student_registration_system_api.entity.News">
     insert into news
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         Id,
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         title,
       </if>
-      <if test="author != null" >
+      <if test="author != null">
         author,
       </if>
-      <if test="source != null" >
+      <if test="source != null">
         source,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
-      <if test="clicks != null" >
+      <if test="clicks != null">
         clicks,
       </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="author != null" >
+      <if test="author != null">
         #{author,jdbcType=VARCHAR},
       </if>
-      <if test="source != null" >
+      <if test="source != null">
         #{source,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=VARCHAR},
       </if>
-      <if test="clicks != null" >
+      <if test="clicks != null">
         #{clicks,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hwh.student_registration_system_api.entity.News" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hwh.student_registration_system_api.entity.News">
     update news
-    <set >
-      <if test="title != null" >
+    <set>
+      <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="author != null" >
+      <if test="author != null">
         author = #{author,jdbcType=VARCHAR},
       </if>
-      <if test="source != null" >
+      <if test="source != null">
         source = #{source,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=VARCHAR},
       </if>
-      <if test="clicks != null" >
+      <if test="clicks != null">
         clicks = #{clicks,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where Id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hwh.student_registration_system_api.entity.News" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hwh.student_registration_system_api.entity.News">
     update news
     set title = #{title,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
       source = #{source,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=VARCHAR},
-      clicks = #{clicks,jdbcType=INTEGER}
+      clicks = #{clicks,jdbcType=INTEGER},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
     where Id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateByPrimaryKey" parameterType="com.hwh.student_registration_system_api.entity.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      clicks = #{clicks,jdbcType=INTEGER},
+      image_url = #{imageUrl,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+
 </mapper>

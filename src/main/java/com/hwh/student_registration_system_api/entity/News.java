@@ -15,4 +15,8 @@ public class News {
     private String updateTime;
 
     private Integer clicks;
+
+    private String imageUrl;
+
+    private String content;
 }

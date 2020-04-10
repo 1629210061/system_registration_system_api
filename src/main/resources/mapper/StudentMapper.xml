@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwh.student_registration_system_api.mapper.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.hwh.student_registration_system_api.entity.Student" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="student_id" property="studentId" jdbcType="VARCHAR" />
+    <result column="dormitory" property="dormitory" jdbcType="VARCHAR" />
+    <result column="headmaster" property="headmaster" jdbcType="VARCHAR" />
+    <result column="instructor" property="instructor" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="faculty" property="faculty" jdbcType="VARCHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="BIGINT" />
+    <result column="register_state" property="registerState" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, real_name, student_id, dormitory, headmaster, instructor, major, faculty, class_name, 
+    gender, phone, native_place, nickname, avatar_url, age, register_state, open_id
+  </sql>
+
+  <select id="selectByOpenId" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where open_id = #{id,jdbcType=VARCHAR}
+  </select>
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hwh.student_registration_system_api.entity.Student" >
+    insert into student (Id, real_name, student_id, 
+      dormitory, headmaster, instructor, 
+      major, faculty, class_name, 
+      gender, phone, native_place, 
+      nickname, avatar_url, age, 
+      register_state)
+    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, 
+      #{dormitory,jdbcType=VARCHAR}, #{headmaster,jdbcType=VARCHAR}, #{instructor,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{faculty,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, #{age,jdbcType=BIGINT}, 
+      #{registerState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hwh.student_registration_system_api.entity.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="dormitory != null" >
+        dormitory,
+      </if>
+      <if test="headmaster != null" >
+        headmaster,
+      </if>
+      <if test="instructor != null" >
+        instructor,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="faculty != null" >
+        faculty,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="nativePlace != null" >
+        native_place,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="avatarUrl != null" >
+        avatar_url,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="registerState != null" >
+        register_state,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="dormitory != null" >
+        #{dormitory,jdbcType=VARCHAR},
+      </if>
+      <if test="headmaster != null" >
+        #{headmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="instructor != null" >
+        #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="faculty != null" >
+        #{faculty,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null" >
+        #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=BIGINT},
+      </if>
+      <if test="registerState != null" >
+        #{registerState,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hwh.student_registration_system_api.entity.Student" >
+    update student
+    <set >
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="dormitory != null" >
+        dormitory = #{dormitory,jdbcType=VARCHAR},
+      </if>
+      <if test="headmaster != null" >
+        headmaster = #{headmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="instructor != null" >
+        instructor = #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="faculty != null" >
+        faculty = #{faculty,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null" >
+        avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=BIGINT},
+      </if>
+      <if test="registerState != null" >
+        register_state = #{registerState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hwh.student_registration_system_api.entity.Student" >
+    update student
+    set real_name = #{realName,jdbcType=VARCHAR},
+      student_id = #{studentId,jdbcType=VARCHAR},
+      dormitory = #{dormitory,jdbcType=VARCHAR},
+      headmaster = #{headmaster,jdbcType=VARCHAR},
+      instructor = #{instructor,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      faculty = #{faculty,jdbcType=VARCHAR},
+      class_name = #{className,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      age = #{age,jdbcType=BIGINT},
+      register_state = #{registerState,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

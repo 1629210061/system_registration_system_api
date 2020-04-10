@@ -7,6 +7,9 @@ spring:
 
 
 mybatis:
-  #  ÅäÖÃmapperÎÄ¼şÎ»ÖÃ
   type-aliases-package: com.hwh.entity
   mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    com.hwh.student_registration_system_api: debug

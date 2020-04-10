@@ -28,6 +28,6 @@ public class NewsController {
 
     @RequestMapping("hello")
     public String hello(){
-        return "hell0";
+        return "hello";
     }
 }
