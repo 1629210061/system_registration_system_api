@@ -15,9 +15,14 @@ public interface StudentMapper {
      */
     int insertSelective(Student student);
 
+    /**
+     * 根据open_id 查询学生信息
+     * @param openId
+     * @return
+     */
     Student selectByOpenId(String openId);
 
-    int updateByPrimaryKeySelective(Student record);
+    int updateDynamicById(Student record);
 
     int updateByPrimaryKey(Student record);
 }

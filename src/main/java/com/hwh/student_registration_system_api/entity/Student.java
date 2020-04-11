@@ -2,6 +2,9 @@ package com.hwh.student_registration_system_api.entity;
 
 import lombok.Data;
 
+/**
+ * 学生类
+ */
 @Data
 public class Student {
     private Integer id;

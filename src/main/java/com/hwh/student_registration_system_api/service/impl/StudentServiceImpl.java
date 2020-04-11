@@ -21,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void addStudent(String nickname, String avatarUrl,String openId) {
         Student isStudent = studentMapper.selectByOpenId(openId);
-        if(isStudent!=null){
+        if(isStudent==null){
             Student student = new Student();
             student.setNickname(nickname);
             student.setAvatarUrl(avatarUrl);
