@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @Author hwh
  * @Date 2020/4/10 15:51
  **/
-@Service("SchoolService")
+@Service("schoolService")
 public class SchoolServiceImpl implements SchoolService {
 
     @Autowired

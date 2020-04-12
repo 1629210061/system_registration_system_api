@@ -13,7 +13,7 @@ import java.util.List;
  * @Author hwh
  * @Date 2020/4/9 21:40
  **/
-@Service("NewsService")
+@Service("newsService")
 public class NewsServiceImpl implements NewsService {
 
     @Autowired
@@ -22,5 +22,10 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public List<News> findAll() {
         return newsMapper.selectAll();
+    }
+
+    @Override
+    public News findNewsById(Integer id) {
+        return newsMapper.selectNewsById(id);
     }
 }

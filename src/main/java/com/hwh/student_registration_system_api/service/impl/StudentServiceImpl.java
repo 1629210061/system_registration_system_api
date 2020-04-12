@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
  * @Author hwh
  * @Date 2020/4/10 15:52
  **/
-@Service("StudentService")
+@Service("studentService")
 public class StudentServiceImpl implements StudentService {
 
     @Autowired

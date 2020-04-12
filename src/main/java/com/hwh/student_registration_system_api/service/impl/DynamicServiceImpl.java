@@ -15,7 +15,7 @@ import java.util.List;
  * @Author hwh
  * @Date 2020/4/10 15:52
  **/
-@Service("DynamicService")
+@Service("dynamicService")
 public class DynamicServiceImpl implements DynamicService {
 
     @Autowired

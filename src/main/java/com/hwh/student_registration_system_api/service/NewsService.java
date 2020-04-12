@@ -15,4 +15,11 @@ public interface NewsService {
      * @return
      */
     public List<News> findAll();
+
+    /**
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    public News findNewsById(Integer id);
 }

@@ -26,8 +26,9 @@ public class NewsController {
         return newsService.findAll();
     }
 
-    @RequestMapping("hello")
-    public String hello(){
-        return "hello";
+
+    @RequestMapping("/findNewsById")
+    public News findNewsById(Integer id){
+        return newsService.findNewsById(id);
     }
 }

@@ -14,12 +14,14 @@
   <sql id="Base_Column_List">
     Id, title, author, source, update_time, clicks, image_url,content
   </sql>
+<!--  查询所有-->
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from news
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+<!--  根据id查询-->
+  <select id="selectNewsById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from news

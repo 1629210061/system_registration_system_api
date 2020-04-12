@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwh.student_registration_system_api.mapper.QuestionMapper" >
+  <resultMap id="BaseResultMap" type="com.hwh.student_registration_system_api.entity.Question" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hwh.student_registration_system_api.entity.Question" extends="BaseResultMap" >
+    <result column="answer" property="answer" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, question
+  </sql>
+  <sql id="Blob_Column_List" >
+    answer
+  </sql>
+<!--  查询所有问题-->
+  <select id="selectAllQuestion" resultMap="ResultMapWithBLOBs" >
+  select
+  <include refid="Base_Column_List" />
+  ,
+  <include refid="Blob_Column_List" />
+  from question
+</select>
+
+  <select id="selectQuestionById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from question
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+
+</mapper>

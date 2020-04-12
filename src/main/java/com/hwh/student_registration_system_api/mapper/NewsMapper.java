@@ -18,7 +18,12 @@ public interface NewsMapper {
 
     int insertSelective(News record);
 
-    News selectByPrimaryKey(Integer id);
+    /**
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    News selectNewsById(Integer id);
 
     int updateByPrimaryKeySelective(News record);
 

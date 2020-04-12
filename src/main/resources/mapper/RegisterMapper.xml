@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwh.student_registration_system_api.mapper.RegisterMapper" >
+  <resultMap id="BaseResultMap" type="com.hwh.student_registration_system_api.entity.Register" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="traffic" property="traffic" jdbcType="VARCHAR" />
+    <result column="traffi_num" property="traffiNum" jdbcType="VARCHAR" />
+    <result column="arrive_time" property="arriveTime" jdbcType="VARCHAR" />
+    <result column="is_accommodation" property="isAccommodation" jdbcType="INTEGER" />
+    <result column="room_number" property="roomNumber" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="leave_start" property="leaveStart" jdbcType="VARCHAR" />
+    <result column="arrive_end" property="arriveEnd" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, traffic, traffi_num, arrive_time, is_accommodation, room_number, open_id, type, 
+    reason, leave_start, arrive_end
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from register
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from register
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hwh.student_registration_system_api.entity.Register" >
+    insert into register (Id, traffic, traffi_num, 
+      arrive_time, is_accommodation, room_number, 
+      open_id, type, reason, 
+      leave_start, arrive_end)
+    values (#{id,jdbcType=INTEGER}, #{traffic,jdbcType=VARCHAR}, #{traffiNum,jdbcType=VARCHAR}, 
+      #{arriveTime,jdbcType=VARCHAR}, #{isAccommodation,jdbcType=INTEGER}, #{roomNumber,jdbcType=INTEGER}, 
+      #{openId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, 
+      #{leaveStart,jdbcType=VARCHAR}, #{arriveEnd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertRegister" parameterType="com.hwh.student_registration_system_api.entity.Register" >
+    insert into register
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="traffic != null" >
+        traffic,
+      </if>
+      <if test="traffiNum != null" >
+        traffi_num,
+      </if>
+      <if test="arriveTime != null" >
+        arrive_time,
+      </if>
+      <if test="isAccommodation != null" >
+        is_accommodation,
+      </if>
+      <if test="roomNumber != null" >
+        room_number,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="leaveStart != null" >
+        leave_start,
+      </if>
+      <if test="arriveEnd != null" >
+        arrive_end,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="traffic != null" >
+        #{traffic,jdbcType=VARCHAR},
+      </if>
+      <if test="traffiNum != null" >
+        #{traffiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveTime != null" >
+        #{arriveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isAccommodation != null" >
+        #{isAccommodation,jdbcType=INTEGER},
+      </if>
+      <if test="roomNumber != null" >
+        #{roomNumber,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="leaveStart != null" >
+        #{leaveStart,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveEnd != null" >
+        #{arriveEnd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hwh.student_registration_system_api.entity.Register" >
+    update register
+    <set >
+      <if test="traffic != null" >
+        traffic = #{traffic,jdbcType=VARCHAR},
+      </if>
+      <if test="traffiNum != null" >
+        traffi_num = #{traffiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveTime != null" >
+        arrive_time = #{arriveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isAccommodation != null" >
+        is_accommodation = #{isAccommodation,jdbcType=INTEGER},
+      </if>
+      <if test="roomNumber != null" >
+        room_number = #{roomNumber,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="leaveStart != null" >
+        leave_start = #{leaveStart,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveEnd != null" >
+        arrive_end = #{arriveEnd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hwh.student_registration_system_api.entity.Register" >
+    update register
+    set traffic = #{traffic,jdbcType=VARCHAR},
+      traffi_num = #{traffiNum,jdbcType=VARCHAR},
+      arrive_time = #{arriveTime,jdbcType=VARCHAR},
+      is_accommodation = #{isAccommodation,jdbcType=INTEGER},
+      room_number = #{roomNumber,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      leave_start = #{leaveStart,jdbcType=VARCHAR},
+      arrive_end = #{arriveEnd,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
