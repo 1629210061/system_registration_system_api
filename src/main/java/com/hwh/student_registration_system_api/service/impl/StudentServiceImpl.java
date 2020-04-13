@@ -46,4 +46,9 @@ public class StudentServiceImpl implements StudentService {
     public Student findByOpenId(String openId) {
         return studentMapper.selectByOpenId(openId);
     }
+
+    @Override
+    public void updateByOpenId(Student student) {
+        studentMapper.updateByOpenId(student);
+    }
 }

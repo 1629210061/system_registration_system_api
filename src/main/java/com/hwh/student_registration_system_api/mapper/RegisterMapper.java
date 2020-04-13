@@ -7,11 +7,26 @@ public interface RegisterMapper {
 
     int insert(Register record);
 
+    /**
+     * 报到注册
+     * @param register
+     * @return
+     */
     int insertRegister(Register register);
 
-    Register selectByPrimaryKey(Integer id);
+    /**
+     * 根据open_id查询
+     * @param openId
+     * @return
+     */
+    Register selectRegisterByOpenId(String openId);
 
-    int updateByPrimaryKeySelective(Register record);
+    /**
+     * 更新
+     * @param register
+     * @return
+     */
+    int updateRegisterByOpenid(Register register);
 
     int updateByPrimaryKey(Register record);
 }

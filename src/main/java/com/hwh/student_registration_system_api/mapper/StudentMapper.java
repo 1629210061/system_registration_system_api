@@ -24,5 +24,10 @@ public interface StudentMapper {
 
     int updateDynamicById(Student record);
 
-    int updateByPrimaryKey(Student record);
+    /**
+     * 更新学生信息
+     * @param student
+     * @return
+     */
+    int updateByOpenId(Student student);
 }

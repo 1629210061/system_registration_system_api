@@ -31,6 +31,7 @@ public interface StudentService {
      */
     public Student findByOpenId(String openId);
 
+    public void updateByOpenId(Student student);
 
 
 }

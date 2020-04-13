@@ -8,7 +8,7 @@ public class Register {
 
     private String traffic;
 
-    private String traffiNum;
+    private String trafficNum;
 
     private String arriveTime;
 
@@ -16,7 +16,7 @@ public class Register {
 
     private Integer roomNumber;
 
-    private Integer openId;
+    private String openId;
 
     private Integer type;
 
@@ -24,5 +24,5 @@ public class Register {
 
     private String leaveStart;
 
-    private String arriveEnd;
+    private String leaveEnd;
 }

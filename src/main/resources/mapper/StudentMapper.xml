@@ -166,7 +166,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hwh.student_registration_system_api.entity.Student" >
+<!--  更新数据-->
+  <update id="updateByOpenId" parameterType="com.hwh.student_registration_system_api.entity.Student" >
     update student
     <set >
       <if test="realName != null" >
@@ -215,7 +216,7 @@
         register_state = #{registerState,jdbcType=VARCHAR},
       </if>
     </set>
-    where Id = #{id,jdbcType=INTEGER}
+    where open_id = #{openId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hwh.student_registration_system_api.entity.Student" >
     update student

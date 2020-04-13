@@ -4,39 +4,39 @@
   <resultMap id="BaseResultMap" type="com.hwh.student_registration_system_api.entity.Register" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="traffic" property="traffic" jdbcType="VARCHAR" />
-    <result column="traffi_num" property="traffiNum" jdbcType="VARCHAR" />
+    <result column="traffic_num" property="trafficNum" jdbcType="VARCHAR" />
     <result column="arrive_time" property="arriveTime" jdbcType="VARCHAR" />
     <result column="is_accommodation" property="isAccommodation" jdbcType="INTEGER" />
     <result column="room_number" property="roomNumber" jdbcType="INTEGER" />
-    <result column="open_id" property="openId" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="reason" property="reason" jdbcType="VARCHAR" />
     <result column="leave_start" property="leaveStart" jdbcType="VARCHAR" />
-    <result column="arrive_end" property="arriveEnd" jdbcType="VARCHAR" />
+    <result column="leave_end" property="leaveEnd" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    Id, traffic, traffi_num, arrive_time, is_accommodation, room_number, open_id, type, 
-    reason, leave_start, arrive_end
+    Id, traffic, traffic_num, arrive_time, is_accommodation, room_number, open_id, type,
+    reason, leave_start, leave_end
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectRegisterByOpenId" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
     from register
-    where Id = #{id,jdbcType=INTEGER}
+    where open_id = #{openId}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from register
     where Id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hwh.student_registration_system_api.entity.Register" >
-    insert into register (Id, traffic, traffi_num, 
+    insert into register (Id, traffic, traffic_num,
       arrive_time, is_accommodation, room_number, 
       open_id, type, reason, 
-      leave_start, arrive_end)
-    values (#{id,jdbcType=INTEGER}, #{traffic,jdbcType=VARCHAR}, #{traffiNum,jdbcType=VARCHAR}, 
+      leave_start, leave_end)
+    values (#{id,jdbcType=INTEGER}, #{traffic,jdbcType=VARCHAR}, #{trafficNum,jdbcType=VARCHAR},
       #{arriveTime,jdbcType=VARCHAR}, #{isAccommodation,jdbcType=INTEGER}, #{roomNumber,jdbcType=INTEGER}, 
-      #{openId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, 
-      #{leaveStart,jdbcType=VARCHAR}, #{arriveEnd,jdbcType=VARCHAR})
+      #{openId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR},
+      #{leaveStart,jdbcType=VARCHAR}, #{leaveEnd,jdbcType=VARCHAR})
   </insert>
   <insert id="insertRegister" parameterType="com.hwh.student_registration_system_api.entity.Register" >
     insert into register
@@ -47,8 +47,8 @@
       <if test="traffic != null" >
         traffic,
       </if>
-      <if test="traffiNum != null" >
-        traffi_num,
+      <if test="trafficNum != null" >
+        traffic_num,
       </if>
       <if test="arriveTime != null" >
         arrive_time,
@@ -71,8 +71,8 @@
       <if test="leaveStart != null" >
         leave_start,
       </if>
-      <if test="arriveEnd != null" >
-        arrive_end,
+      <if test="leaveEnd != null" >
+        leave_end,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -82,8 +82,8 @@
       <if test="traffic != null" >
         #{traffic,jdbcType=VARCHAR},
       </if>
-      <if test="traffiNum != null" >
-        #{traffiNum,jdbcType=VARCHAR},
+      <if test="trafficNum != null" >
+        #{trafficNum,jdbcType=VARCHAR},
       </if>
       <if test="arriveTime != null" >
         #{arriveTime,jdbcType=VARCHAR},
@@ -95,7 +95,7 @@
         #{roomNumber,jdbcType=INTEGER},
       </if>
       <if test="openId != null" >
-        #{openId,jdbcType=INTEGER},
+        #{openId,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
@@ -106,19 +106,19 @@
       <if test="leaveStart != null" >
         #{leaveStart,jdbcType=VARCHAR},
       </if>
-      <if test="arriveEnd != null" >
-        #{arriveEnd,jdbcType=VARCHAR},
+      <if test="leaveEnd != null" >
+        #{leaveEnd,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hwh.student_registration_system_api.entity.Register" >
+  <update id="updateRegisterByOpenid" parameterType="com.hwh.student_registration_system_api.entity.Register" >
     update register
     <set >
       <if test="traffic != null" >
         traffic = #{traffic,jdbcType=VARCHAR},
       </if>
-      <if test="traffiNum != null" >
-        traffi_num = #{traffiNum,jdbcType=VARCHAR},
+      <if test="trafficNum != null" >
+        traffic_num = #{trafficNum,jdbcType=VARCHAR},
       </if>
       <if test="arriveTime != null" >
         arrive_time = #{arriveTime,jdbcType=VARCHAR},
@@ -130,7 +130,7 @@
         room_number = #{roomNumber,jdbcType=INTEGER},
       </if>
       <if test="openId != null" >
-        open_id = #{openId,jdbcType=INTEGER},
+        open_id = #{openId,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
@@ -141,24 +141,24 @@
       <if test="leaveStart != null" >
         leave_start = #{leaveStart,jdbcType=VARCHAR},
       </if>
-      <if test="arriveEnd != null" >
-        arrive_end = #{arriveEnd,jdbcType=VARCHAR},
+      <if test="leaveEnd != null" >
+        leave_end = #{leaveEnd,jdbcType=VARCHAR},
       </if>
     </set>
-    where Id = #{id,jdbcType=INTEGER}
+    where open_id = #{openId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hwh.student_registration_system_api.entity.Register" >
     update register
     set traffic = #{traffic,jdbcType=VARCHAR},
-      traffi_num = #{traffiNum,jdbcType=VARCHAR},
+      traffic_num = #{trafficNum,jdbcType=VARCHAR},
       arrive_time = #{arriveTime,jdbcType=VARCHAR},
       is_accommodation = #{isAccommodation,jdbcType=INTEGER},
       room_number = #{roomNumber,jdbcType=INTEGER},
-      open_id = #{openId,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
       reason = #{reason,jdbcType=VARCHAR},
       leave_start = #{leaveStart,jdbcType=VARCHAR},
-      arrive_end = #{arriveEnd,jdbcType=VARCHAR}
+      leave_end = #{leaveEnd,jdbcType=VARCHAR}
     where Id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

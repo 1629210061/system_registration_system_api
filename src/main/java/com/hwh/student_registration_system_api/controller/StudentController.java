@@ -33,4 +33,9 @@ public class StudentController {
     public Student findByOpenId(String openId){
         return studentService.findByOpenId(openId);
     }
+
+    @RequestMapping("/updateByOpenId")
+    public void updateByOpenId(Student student){
+        studentService.updateByOpenId(student);
+    }
 }
