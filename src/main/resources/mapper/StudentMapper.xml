@@ -33,30 +33,8 @@
   </select>
 
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from student
-    where Id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from student
-    where Id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.hwh.student_registration_system_api.entity.Student" >
-    insert into student (Id, real_name, student_id, 
-      dormitory, headmaster, instructor, 
-      major, faculty, class_name, 
-      gender, phone, native_place, 
-      nickname, avatar_url, age, 
-      register_state)
-    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, 
-      #{dormitory,jdbcType=VARCHAR}, #{headmaster,jdbcType=VARCHAR}, #{instructor,jdbcType=VARCHAR}, 
-      #{major,jdbcType=VARCHAR}, #{faculty,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, 
-      #{nickname,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, #{age,jdbcType=BIGINT}, 
-      #{registerState,jdbcType=VARCHAR})
-  </insert>
+
+<!--  添加-->
   <insert id="insertSelective" parameterType="com.hwh.student_registration_system_api.entity.Student" >
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -216,25 +194,7 @@
         register_state = #{registerState,jdbcType=VARCHAR},
       </if>
     </set>
-    where open_id = #{openId,jdbcType=INTEGER}
+    where open_id = #{openId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hwh.student_registration_system_api.entity.Student" >
-    update student
-    set real_name = #{realName,jdbcType=VARCHAR},
-      student_id = #{studentId,jdbcType=VARCHAR},
-      dormitory = #{dormitory,jdbcType=VARCHAR},
-      headmaster = #{headmaster,jdbcType=VARCHAR},
-      instructor = #{instructor,jdbcType=VARCHAR},
-      major = #{major,jdbcType=VARCHAR},
-      faculty = #{faculty,jdbcType=VARCHAR},
-      class_name = #{className,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      native_place = #{nativePlace,jdbcType=VARCHAR},
-      nickname = #{nickname,jdbcType=VARCHAR},
-      avatar_url = #{avatarUrl,jdbcType=VARCHAR},
-      age = #{age,jdbcType=BIGINT},
-      register_state = #{registerState,jdbcType=VARCHAR}
-    where Id = #{id,jdbcType=INTEGER}
-  </update>
+
 </mapper>

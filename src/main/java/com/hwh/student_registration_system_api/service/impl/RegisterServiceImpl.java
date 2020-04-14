@@ -38,7 +38,10 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public void updateRegisterByOpenid(Register register) {
+    public void updateRegisterByOpenid(Student student,Register register) {
+        String openId = register.getOpenId();
+        student.setOpenId(openId);
+        studentMapper.updateByOpenId(student);
         registerMapper.updateRegisterByOpenid(register);
     }
 }

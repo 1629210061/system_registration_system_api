@@ -28,5 +28,5 @@ public interface RegisterService {
      * 更新信息
      * @param register
      */
-    public void updateRegisterByOpenid(Register register);
+    public void updateRegisterByOpenid(Student student,Register register);
 }

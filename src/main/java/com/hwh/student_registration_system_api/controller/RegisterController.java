@@ -35,8 +35,9 @@ public class RegisterController {
      * @param register
      */
     @RequestMapping("/updateRegisterByOpenid")
-    public void updateRegisterByOpenid(Register register){
-        registerService.updateRegisterByOpenid(register);
+    public void updateRegisterByOpenid(Student student,Register register){
+
+        registerService.updateRegisterByOpenid(student,register);
     }
 
     /**

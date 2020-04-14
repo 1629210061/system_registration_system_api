@@ -31,6 +31,10 @@ public interface StudentService {
      */
     public Student findByOpenId(String openId);
 
+    /**
+     * 更新用户信息
+     * @param student
+     */
     public void updateByOpenId(Student student);
 
 
