@@ -34,6 +34,7 @@ public class SchoolServiceImpl implements SchoolService {
 
     @Override
     public School findFaultyIntroduce(Integer type, String name) {
+        name = "%"+name+"%";
         return schoolMapper.selectFacultyIntroduce(type,name);
     }
 }

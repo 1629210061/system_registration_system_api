@@ -21,6 +21,7 @@ public class StudentController {
 
     @RequestMapping("/getOpenId")
     public String getOpenId(String code){
+        System.out.println(code);
         return studentService.getOpenId(code);
     }
 

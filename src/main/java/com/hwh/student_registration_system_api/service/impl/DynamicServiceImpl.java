@@ -8,6 +8,8 @@ import com.hwh.student_registration_system_api.service.DynamicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +40,10 @@ public class DynamicServiceImpl implements DynamicService {
 
     @Override
     public void insertDynamic(Dynamic dynamic) {
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(System.currentTimeMillis());
+        String dateTime = formatter.format(date);
+        dynamic.setDate(dateTime);
         dynamicMapper.insertDynamic(dynamic);
     }
 
